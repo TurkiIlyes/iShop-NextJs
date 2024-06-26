@@ -10,7 +10,7 @@ const page = () => {
           Check verification code
         </h1>
         <p className=" text-sm font-normal pt-3">
-          It's easy! just take a minute and provide the details.
+          It\'s easy! just take a minute and provide the details.
         </p>
       </div>
       <div className=" grid gap-y-4 py-4">
