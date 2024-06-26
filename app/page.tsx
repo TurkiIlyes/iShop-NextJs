@@ -1,14 +1,10 @@
 import CategorysSection from "@/components/category/CategorysSection";
-import Header from "@/components/header/Header";
 import Hero from "@/components/hero/Hero";
-import TopHeader from "@/components/header/TopHeader";
 import ProductSection from "@/components/product/ProductSection";
 import AllProductsSection from "@/components/product/AllProductsSection";
-import PrimaryButton from "@/components/utils/PrimaryButton";
 import NewArrivalSection from "@/components/newArrival/NewArrivalSection";
 import CategorySection from "@/components/category/CategorySection";
 import FeaturesSection from "@/components/features/FeaturesSection";
-import Footer from "@/components/footer/Footer";
 
 const data = [
   {
@@ -70,8 +66,7 @@ const data = [
 export default function Home() {
   return (
     <main className=" bg-grayscale-200 ">
-      <TopHeader />
-      <Header />
+      
       <Hero />
 
       <ProductSection
@@ -96,7 +91,7 @@ export default function Home() {
 
       <NewArrivalSection />
       <FeaturesSection />
-      <Footer />
+      
     </main>
   );
 }
