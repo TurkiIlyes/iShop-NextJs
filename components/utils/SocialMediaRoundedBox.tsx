@@ -5,7 +5,7 @@ const SocialMediaRoundedBox = ({ icon }: { icon: IconProp }) => {
   return (
     <FontAwesomeIcon
       icon={icon}
-      className=" w-10 h-10 p-2.5 my-4  bg-white hover:bg-customOrange-800 text-customOrange-800 hover:text-white rounded-full cursor-pointer  "
+      className=" w-5 h-5 p-2.5 my-4  bg-white hover:bg-customRed-900 text-customRed-900 hover:text-white rounded-full cursor-pointer  "
     />
   );
 };

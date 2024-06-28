@@ -22,9 +22,9 @@ const LinksList = ({ title, data }: props) => {
               <Link href={e.url} className="flex items-center ">
                 <FontAwesomeIcon
                   icon={faLocationArrow}
-                  className=" w-4 h-4 text-customOrange-800 group-hover:rotate-45 transition-all duration-300"
+                  className=" w-4 h-4 text-customRed-900 group-hover:rotate-45 transition-all duration-300"
                 />
-                <span className=" ml-3 text-xs font-normal text-opacity-70 text-grayscale-200 group-hover:text-customOrange-800 transition-all duration-300">
+                <span className=" ml-3 text-xs font-normal text-opacity-70 text-grayscale-200 group-hover:text-customRed-900 transition-all duration-300">
                   {e.title}
                 </span>
               </Link>

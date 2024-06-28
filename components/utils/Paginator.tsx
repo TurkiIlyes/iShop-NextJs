@@ -10,27 +10,49 @@ import {
 
 const Paginator = () => {
   return (
-    <Pagination>
+    <Pagination className=" my-10 text-xl">
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious href="#" />
+          <PaginationPrevious
+            href="/signup"
+            className=" bg-customRed-900 text-white"
+          />
         </PaginationItem>
+
         <PaginationItem>
-          <PaginationLink href="#">1</PaginationLink>
+          <PaginationLink
+            href="#"
+            className=" bg-grayscale-500 text-grayscale-700 font-semibold">
+            1
+          </PaginationLink>
         </PaginationItem>
+
         <PaginationItem>
-          <PaginationLink href="#" isActive>
+          <PaginationLink
+            href="#"
+            className=" bg-customRed-900 text-white font-semibold"
+            isActive>
             2
           </PaginationLink>
         </PaginationItem>
+
         <PaginationItem>
-          <PaginationLink href="#">3</PaginationLink>
+          <PaginationLink
+            href="#"
+            className=" bg-grayscale-500 text-grayscale-700 font-semibold">
+            3
+          </PaginationLink>
         </PaginationItem>
+
         <PaginationItem>
-          <PaginationEllipsis />
+          <PaginationEllipsis className=" text-customRed-900" />
         </PaginationItem>
+
         <PaginationItem>
-          <PaginationNext href="#" />
+          <PaginationNext
+            href="/products/test"
+            className=" bg-customRed-900 text-white"
+          />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

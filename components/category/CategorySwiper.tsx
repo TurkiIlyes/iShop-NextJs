@@ -10,9 +10,11 @@ import CategoryBox from "./CategoryBox";
 const CategorySwiper = ({
   prevEl,
   nextEl,
+  data,
 }: {
   prevEl: string;
   nextEl: string;
+  data: { title: string; icon: any }[];
 }) => {
   return (
     <>
@@ -41,24 +43,13 @@ const CategorySwiper = ({
           nextEl: `.${nextEl}`,
         }}
         className="flex h-full w-full">
-        <SwiperSlide>
-          <CategoryBox />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CategoryBox />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CategoryBox />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CategoryBox />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CategoryBox />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CategoryBox />
-        </SwiperSlide>
+        {data.map((e, i) => {
+          return (
+            <SwiperSlide key={i}>
+              <CategoryBox title={e.title} icon={e.icon} />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </>
   );
