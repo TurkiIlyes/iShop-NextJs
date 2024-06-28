@@ -12,10 +12,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="  min-h-[500px] lg:bg-grayscale-200 relative -z-10">
+    <div className="  min-h-[500px] relative -z-10">
       <div className="container ">
         <div className=" grid grid-cols-1 lg:grid-cols-[60%,40%] ">
-          <div className=" h-full max-lg:hidden">
+          <div className=" h-full max-lg:hidden p-8">
             <AuthSwiper />
           </div>
           <div className="mt-4 ">{children}</div>

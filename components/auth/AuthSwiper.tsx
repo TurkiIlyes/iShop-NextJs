@@ -22,7 +22,7 @@ const AuthSwiper = () => {
         }}
         pagination={{ clickable: true }}
         modules={[Autoplay, Pagination, Navigation]}
-        className=" landing-swiper h-full w-full ">
+        className=" landing-swiper h-full w-full bg-grayscale-500 rounded-2xl shadow-[0px_0px_3px] shadow-grayscale-600">
         <SwiperSlide>
           <AuthSlide img="/imgs/authSwiper2WithoutBg.png" />
         </SwiperSlide>

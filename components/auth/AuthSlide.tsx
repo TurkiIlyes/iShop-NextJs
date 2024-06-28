@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const AuthSlide = ({ img }: { img: string }) => {
   return (
-    <div className=" flex w-full h-full relative bg-customRed-900 ">
+    <div className=" flex w-full h-full relativ ">
       <Image
         src={img}
         width={800}

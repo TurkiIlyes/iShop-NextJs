@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
-import ProductCard from "./ProductCard";
+import ProductCard from "./ProductCard/ProductCard";
 
 const ProductSwiper = ({
   data,

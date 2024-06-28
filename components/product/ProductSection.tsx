@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCard from "./ProductCard";
+import ProductCard from "./ProductCard/ProductCard";
 import SectionNavBar from "../utils/SectionNavBar";
 import SectionHeader from "../utils/SectionHeader";
 import PrimaryButton from "../utils/PrimaryButton";

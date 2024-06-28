@@ -1,5 +1,3 @@
-import React from "react";
-
 const BottomFooter = () => {
   return (
     <div className=" bg-darkGrey-800">
