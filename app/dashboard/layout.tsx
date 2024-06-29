@@ -12,10 +12,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className=" container min-h-[600px]">
+    <div className=" ">
       <div className="grid grid-cols-[20%_80%]">
         <DashboardSideBar />
-        <div className="">{children}</div>
+        <div className=" py-4 px-4">{children}</div>
       </div>
     </div>
   );

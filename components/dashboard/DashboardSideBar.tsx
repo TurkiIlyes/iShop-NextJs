@@ -1,50 +1,74 @@
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import DashboardCollapsible from "./DashboardCollapsible";
 
 const links = [
   {
-    title: "Dashboard",
+    icon: faHouse,
+    title: "Woman's Fashion",
+    content: ["Elegant Dress", "Chic Blouse"],
   },
   {
-    title: "Dashboard",
+    icon: faHouse,
+    title: "Men's Fashion",
+    content: ["Tailored Suit", "Casual Shirts"],
   },
   {
-    title: "Dashboard",
+    icon: faHouse,
+    title: "Electronics",
+    content: [],
   },
   {
-    title: "Dashboard",
+    icon: faHouse,
+    title: "Home & Lifestyle",
+    content: [],
   },
   {
-    title: "Dashboard",
+    icon: faHouse,
+    title: "Medicine",
+    content: [],
   },
   {
-    title: "Dashboard",
+    icon: faHouse,
+    title: "Sports & Outdoor",
+    content: [],
   },
   {
-    title: "Dashboard",
+    icon: faHouse,
+    title: "Baby's & Toys",
+    content: [],
   },
   {
-    title: "Dashboard",
-  },
-  {
-    title: "Dashboard",
+    icon: faHouse,
+    title: "Groceries & Pets",
+    content: [],
   },
 ];
 
 const DashboardSideBar = () => {
   return (
-    <div className="hidden lg:flex flex-col gap-2 h-full py-8 border-r-[1px] border-grayscale-500  text-grayscale-900">
-      {links.map((l, i) => {
-        return (
-          <div
-            key={i}
-            className="flex items-center gap-4 w-full py-3 pl-2 pr-4 text-left text-base font-medium cursor-pointer">
-            <FontAwesomeIcon icon={faHouse} className=" w-6 h-6 " />
-            <span className="">{l.title}</span>
-          </div>
-        );
-      })}
+    <div className=" hidden lg:flex border-r-[1px] border-grayscale-500 ">
+      <div className=" flex flex-col gap-8 w-full h-full py-10 px-4  ">
+        <div className=" flex flex-col gap-1">
+          <h1 className=" text-2xl font-medium text-grayscale-800 text-center">
+            Dashboard
+          </h1>
+          <p className=" text-xs font-medium text-grayscale-600 text-center">
+            All you need in one place
+          </p>
+        </div>
+        <div className=" flex flex-col gap-2">
+          {links.map((e, i) => {
+            return (
+              <DashboardCollapsible
+                key={i}
+                icon={e.icon}
+                title={e.title}
+                content={e.content}
+              />
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };

@@ -24,8 +24,10 @@ const ProductCard = ({
 }: props) => {
   return (
     <div className="w-full h-[380px] relative">
-      <ProductCardDiscount discount={discount} />
-      <ProductCardImage image={image} />
+      <div className=" w-full h-2/3">
+        <ProductCardDiscount discount={discount} />
+        <ProductCardImage image={image} />
+      </div>
 
       <div className=" h-1/3 p-4 bg-grayscale-200 ">
         <ProductCardInfo
