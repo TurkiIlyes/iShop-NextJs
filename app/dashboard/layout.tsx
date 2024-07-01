@@ -12,11 +12,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className=" ">
-      <div className="grid grid-cols-[20%_80%]">
-        <DashboardSideBar />
-        <div className=" py-4 px-4">{children}</div>
-      </div>
+    <div className="grid max-lg:grid-cols-[100%] lg:grid-cols-[20%_80%]">
+      <DashboardSideBar />
+      <div className=" py-4 px-4">{children}</div>
     </div>
   );
 }
