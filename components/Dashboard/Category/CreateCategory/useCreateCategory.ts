@@ -10,6 +10,9 @@ import {
   customHandleSubmit,
   customImagesChange,
 } from "@/utils/handlers";
+import { validateFormFields } from "@/utils/validateFormFields";
+import { handleError } from "@/utils/handleError";
+import { verifyCategoryValidationRules } from "@/utils/validationRules";
 
 const statusData = [
   {
@@ -62,6 +65,19 @@ const useCreateCategory = () => {
     }));
   };
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const dataToValidate: Record<string, string> = {
+      name: categoryData.name || "",
+      status: categoryData.status || "",
+      image: imageFile ? imageFile.type : "",
+    };
+    const newErrors = validateFormFields(
+      dataToValidate,
+      verifyCategoryValidationRules
+    );
+    if (Object.keys(newErrors).length > 0) {
+      handleError({ customError: true, errors: newErrors });
+      return;
+    }
     customHandleSubmit(
       e,
       { image: imageFile },

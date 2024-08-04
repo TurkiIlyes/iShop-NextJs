@@ -11,6 +11,9 @@ import {
   customHandleChange,
   customHandleSubmit,
 } from "@/utils/handlers";
+import { validateFormFields } from "@/utils/validateFormFields";
+import { handleError } from "@/utils/handleError";
+import { verifyEditOrderValidationRules } from "@/utils/validationRules";
 
 const statusData = [
   { value: "pending", label: "Pending" },
@@ -94,6 +97,24 @@ const useEditOrder = (id: string) => {
   };
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const dataToValidate: Record<string, string> = {
+      email: orderData.email || "",
+      phone: orderData.phone || "",
+      status: orderData.status || "",
+      paymentStatus: orderData.paymentStatus || "",
+      details: orderData.address?.details || "",
+      governorate: orderData.address?.governorate || "",
+      city: orderData.address?.city || "",
+      postalCode: orderData.address?.postalCode || "",
+    };
+    const newErrors = validateFormFields(
+      dataToValidate,
+      verifyEditOrderValidationRules
+    );
+    if (Object.keys(newErrors).length > 0) {
+      handleError({ customError: true, errors: newErrors });
+      return;
+    }
     customHandleSubmit(
       e,
       {},

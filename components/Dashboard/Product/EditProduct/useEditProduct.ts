@@ -14,6 +14,9 @@ import {
   customHandleSubmit,
   customImagesChange,
 } from "@/utils/handlers";
+import { verifyProductValidationRules } from "@/utils/validationRules";
+import { validateFormFields } from "@/utils/validateFormFields";
+import { handleError } from "@/utils/handleError";
 const categorysData = [
   {
     value: "66945034cc9465a33a0ee546",
@@ -180,6 +183,29 @@ const useEditProduct = (id: string) => {
       } else if (typeof image === "string") {
         formImages.push(await urlToFile(image, `image.png`, "image/jpeg"));
       }
+    }
+
+    const dataToValidate: Record<string, string> = {
+      title: productData.title || "",
+      description: productData.description || "",
+      category: productData.category || "",
+      price: productData.price?.toString() || "",
+      discount: productData.discount?.toString() || "",
+      sku: productData.sku || "",
+      quantity: productData.quantity?.toString() || "",
+      status: productData.status || "",
+      colors: JSON.stringify(productData.colors),
+      sizes: JSON.stringify(productData.sizes),
+      imageCover: formImage ? formImage.type : "",
+      images: formImages.map((file) => file.type).join(", "),
+    };
+    const newErrors = validateFormFields(
+      dataToValidate,
+      verifyProductValidationRules
+    );
+    if (Object.keys(newErrors).length > 0) {
+      handleError({ customError: true, errors: newErrors });
+      return;
     }
 
     customHandleSubmit(

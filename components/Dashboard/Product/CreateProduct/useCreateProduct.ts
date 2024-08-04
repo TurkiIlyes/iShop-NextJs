@@ -12,6 +12,9 @@ import {
   customHandleSubmit,
   customImagesChange,
 } from "@/utils/handlers";
+import { handleError } from "@/utils/handleError";
+import { validateFormFields } from "@/utils/validateFormFields";
+import { verifyProductValidationRules } from "@/utils/validationRules";
 const categorysData = [
   {
     value: "66945034cc9465a33a0ee546",
@@ -127,6 +130,29 @@ const useCreateProduct = () => {
   }));
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+
+    const dataToValidate: Record<string, string> = {
+      title: productData.title || "",
+      description: productData.description || "",
+      category: productData.category || "",
+      price: productData.price?.toString() || "",
+      discount: productData.discount?.toString() || "",
+      sku: productData.sku || "",
+      quantity: productData.quantity?.toString() || "",
+      status: productData.status || "",
+      colors: JSON.stringify(productData.colors),
+      sizes: JSON.stringify(productData.sizes),
+      imageCover: imageCoverFile ? imageCoverFile.type : "",
+      images: imagesFiles.map((file) => file.type).join(", "),
+    };
+    const newErrors = validateFormFields(
+      dataToValidate,
+      verifyProductValidationRules
+    );
+    if (Object.keys(newErrors).length > 0) {
+      handleError({ customError: true, errors: newErrors });
+      return;
+    }
     customHandleSubmit(
       e,
       { imageCover: imageCoverFile, images: imagesFiles },

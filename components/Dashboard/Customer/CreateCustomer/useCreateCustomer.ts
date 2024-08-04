@@ -11,6 +11,9 @@ import {
   customHandleSubmit,
   customHandleAddressChange,
 } from "@/utils/handlers";
+import { validateFormFields } from "@/utils/validateFormFields";
+import { verifyCustomerValidationRules } from "@/utils/validationRules";
+import { handleError } from "@/utils/handleError";
 
 const statusData = [
   {
@@ -75,6 +78,27 @@ const useCreateCustomer = () => {
     customHandleAddressChange(fieldName, setCustomerData, value);
   };
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const dataToValidate: Record<string, string> = {
+      name: customerData.name || "",
+      email: customerData.email || "",
+      phone: customerData.phone || "",
+      status: customerData.status || "",
+      details: customerData.address?.details || "",
+      governorate: customerData.address?.governorate || "",
+      city: customerData.address?.city || "",
+      postalCode: customerData.address?.postalCode || "",
+      password: customerData.password || "",
+      image: imageFile ? imageFile.type : "",
+    };
+    const newErrors = validateFormFields(
+      dataToValidate,
+      verifyCustomerValidationRules
+    );
+    if (Object.keys(newErrors).length > 0) {
+      handleError({ customError: true, errors: newErrors });
+      return;
+    }
+
     customHandleSubmit(
       e,
       { image: imageFile },

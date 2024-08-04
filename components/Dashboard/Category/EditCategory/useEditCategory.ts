@@ -12,6 +12,9 @@ import {
   customHandleSubmit,
   customImagesChange,
 } from "@/utils/handlers";
+import { validateFormFields } from "@/utils/validateFormFields";
+import { verifyCategoryValidationRules } from "@/utils/validationRules";
+import { handleError } from "@/utils/handleError";
 
 const statusData = [
   {
@@ -89,6 +92,20 @@ const useEditCategory = (id: string) => {
     const formImage = imageFile
       ? imageFile
       : await urlToFile(categoryData.image as string, "image.png", "image/png");
+
+    const dataToValidate: Record<string, string> = {
+      name: categoryData.name || "",
+      status: categoryData.status || "",
+      image: formImage ? formImage.type : "",
+    };
+    const newErrors = validateFormFields(
+      dataToValidate,
+      verifyCategoryValidationRules
+    );
+    if (Object.keys(newErrors).length > 0) {
+      handleError({ customError: true, errors: newErrors });
+      return;
+    }
     customHandleSubmit(
       e,
       {

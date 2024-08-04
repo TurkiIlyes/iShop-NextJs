@@ -13,6 +13,9 @@ import {
   customHandleSubmit,
   customImagesChange,
 } from "@/utils/handlers";
+import { validateFormFields } from "@/utils/validateFormFields";
+import { verifyCustomerValidationRules } from "@/utils/validationRules";
+import { handleError } from "@/utils/handleError";
 
 const statusData = [
   {
@@ -100,6 +103,28 @@ const useEditCustomer = (id: string) => {
     const formImage = imageFile
       ? imageFile
       : await urlToFile(customerData.image as string, "image.png", "image/png");
+
+    const dataToValidate: Record<string, string> = {
+      name: customerData.name || "",
+      email: customerData.email || "",
+      phone: customerData.phone || "",
+      status: customerData.status || "",
+      details: customerData.address?.details || "",
+      governorate: customerData.address?.governorate || "",
+      city: customerData.address?.city || "",
+      postalCode: customerData.address?.postalCode || "",
+      password: customerData.password || "",
+      image: formImage ? formImage.type : "",
+    };
+    const newErrors = validateFormFields(
+      dataToValidate,
+      verifyCustomerValidationRules
+    );
+    if (Object.keys(newErrors).length > 0) {
+      handleError({ customError: true, errors: newErrors });
+      return;
+    }
+
     customHandleSubmit(
       e,
       {
