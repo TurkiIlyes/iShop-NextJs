@@ -2,7 +2,7 @@ import ProductCardDiscount from "./subcomponents/ProductCardDiscount";
 import ProductCardImage from "./subcomponents/ProductCardImage";
 import ProductCardInfo from "./subcomponents/ProductCardInfo";
 import Link from "next/link";
-import ProductPreview from "./subcomponents/ProductPreview";
+import ProductPreview from "./subcomponents/ProductPreview/ProductPreview";
 import AddToBasketButton from "./subcomponents/AddToBasketButton";
 
 interface props {
@@ -14,6 +14,7 @@ interface props {
   imageCover: string;
   ratingsAverage?: number;
   ratingsQuantity?: number;
+  addedToWishList?: boolean;
 }
 
 const ProductCard = ({
@@ -25,13 +26,14 @@ const ProductCard = ({
   imageCover,
   ratingsAverage,
   ratingsQuantity,
+  addedToWishList,
 }: props) => {
   return (
     <div className="w-full relative z-0">
       <div className=" group relative w-full overflow-hidden ">
         {discount && <ProductCardDiscount discount={discount} />}
         <ProductCardImage image={imageCover} />
-        <ProductPreview id={id} />
+        <ProductPreview id={id} addedToWishList={addedToWishList} />
         <AddToBasketButton id={id} />
       </div>
 

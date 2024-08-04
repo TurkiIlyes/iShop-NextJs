@@ -18,6 +18,10 @@ const links = [
     href: "/account/security",
   },
   {
+    name: "WishList",
+    href: "/account/wish-list",
+  },
+  {
     name: "Orders",
     href: "/account/orders",
   },
