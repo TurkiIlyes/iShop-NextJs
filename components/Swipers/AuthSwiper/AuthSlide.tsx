@@ -9,7 +9,7 @@ const AuthSlide = ({ img }: { img: string }) => {
         height={800}
         objectFit="cover"
         alt="landingSwiper1"
-        className="w-full h-full object-cover rounded-xl"
+        className="w-full aspect-[2/3] rounded-xl"
       />
     </div>
   );

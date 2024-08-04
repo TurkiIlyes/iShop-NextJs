@@ -48,7 +48,8 @@ const ComboBox = ({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className={`py-6 w-full justify-between text-sm font-normal text-grayscale-800 shadow-[0px_0px_2px] shadow-grayscale-800 border-none rounded-md ${className}`}>
+          className={`py-6 w-full justify-between text-sm font-normal text-grayscale-800 shadow-[0px_0px_2px] shadow-grayscale-800 border-none rounded-md ${className}`}
+        >
           {value
             ? data.find((e) => e.value === value)?.label
             : `Select ${label}...`}
@@ -69,9 +70,13 @@ const ComboBox = ({
                     setValue(currentValue === value ? "" : currentValue);
                     setOpen(false);
                     if (onChange) {
-                      onChange(currentValue, name);
+                      onChange(
+                        currentValue === value ? "" : currentValue,
+                        name
+                      );
                     }
-                  }}>
+                  }}
+                >
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",

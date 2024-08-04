@@ -3,6 +3,10 @@ import { UserType, updateUser } from "@/redux/slices/usersSlice";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "@/redux/hooks";
 import { customHandleChange, handleChangeSelect } from "@/utils/handlers";
+import { validateFormFields } from "@/utils/validateFormFields";
+import { verifyAddressValidationRules } from "@/utils/validationRules";
+import { handleError } from "@/utils/handleError";
+import toast from "react-hot-toast";
 
 type Address = {
   details: string;
@@ -20,7 +24,7 @@ const useAddressDetails = (user: UserType | null) => {
     postalCode: user?.address?.postalCode || "",
   });
 
-  const [editField, setEditField] = useState<string>("");
+  const [editField, setEditField] = useState<keyof Address | "">("");
 
   useEffect(() => {
     if (user) {
@@ -45,10 +49,26 @@ const useAddressDetails = (user: UserType | null) => {
   };
 
   const handleEdit = (field: keyof Address) => {
+    const dataToValidate: Record<string, string> = {
+      [editField]: data[editField as keyof Address],
+    };
+    const newErrors = validateFormFields(
+      dataToValidate,
+      verifyAddressValidationRules
+    );
+    if (Object.keys(newErrors).length > 0) {
+      handleError({ customError: true, errors: newErrors });
+      return;
+    }
     if (field === editField) {
       const formData = new FormData();
       formData.append(`address.${field}`, data[field]);
-      dispatch(updateUser({ user: formData }));
+      dispatch(updateUser({ user: formData })).then((e: any) => {
+        if (!e.error) {
+          toast.success(`${field} updated successfully`);
+        }
+      });
+
       setEditField("");
     } else {
       setEditField(field);

@@ -14,13 +14,13 @@ export default function RootLayout({
   return (
     <div className="  min-h-[500px] relative ">
       <div className="container ">
-        <div className=" grid grid-cols-1 lg:grid-cols-[60%,40%] ">
+        <div className=" grid grid-cols-1 lg:grid-cols-[50%,40%] gap-[10%] ">
           <div className=" h-full max-lg:hidden flex items-center justify-center ">
-            <div className=" w-4/5 aspect-[2/3]">
+            <div className=" w-full aspect-[3/4]">
               <AuthSwiper />
             </div>
           </div>
-          <div className="mt-4 ">{children}</div>
+          <div className=" flex items-center ">{children}</div>
         </div>
       </div>
     </div>

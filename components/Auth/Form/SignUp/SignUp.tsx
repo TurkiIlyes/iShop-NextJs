@@ -20,7 +20,7 @@ const SignUp = ({ AuthButtonTitle }: { AuthButtonTitle: string }) => {
   return (
     <>
       <div className=" grid gap-4 py-4">
-        <div className="grid grid-cols-2 gap-4 ">
+        <div className=" w-full grid grid-cols-2 gap-4 ">
           <CustomInput
             label="full Name"
             placeholder="Full Name"
@@ -59,7 +59,7 @@ const SignUp = ({ AuthButtonTitle }: { AuthButtonTitle: string }) => {
           name="passwordConfirm"
         />
       </div>
-      <div className=" flex gap-3  py-4 px-2">
+      <div className=" w-full  flex gap-3  py-4 px-2">
         <button type="button" onClick={handleAcceptTerms}>
           {hasAcceptedTerms ? (
             <FontAwesomeIcon

@@ -5,6 +5,9 @@ import { useAppDispatch } from "@/redux/hooks";
 import { urlToFile } from "@/utils/UrlToFile";
 import { customHandleChange, customImagesChange } from "@/utils/handlers";
 import { useRouter } from "next/navigation";
+import { validateFormFields } from "@/utils/validateFormFields";
+import { handleError } from "@/utils/handleError";
+import { verifyBasicDetailsValidationRules } from "@/utils/validationRules";
 
 type BasicDetailsType = {
   image: string;
@@ -43,17 +46,35 @@ const useBasicDetails = (user: UserType | null) => {
   };
 
   const handleEdit = async (field: keyof BasicDetailsType) => {
+    let file: File | null = null;
+    let dataToValidate: Record<string, string> = {};
+
+    if (editField === "image") {
+      file = imageFile
+        ? imageFile
+        : data.image
+        ? await urlToFile(data.image, "image.png", "image/png")
+        : null;
+      console.log(file);
+      dataToValidate = { image: file ? file.type : "" };
+    } else {
+      dataToValidate = {
+        [editField]: data[editField as keyof BasicDetailsType],
+      };
+    }
+    const newErrors = validateFormFields(
+      dataToValidate,
+      verifyBasicDetailsValidationRules
+    );
+    if (Object.keys(newErrors).length > 0) {
+      handleError({ customError: true, errors: newErrors });
+      return;
+    }
+
     const formData = new FormData();
     if (field === editField) {
-      if (field === "image") {
-        const file = imageFile
-          ? formData.append("image", imageFile)
-          : data.image
-          ? await urlToFile(data.image, "image.png", "image/png")
-          : null;
-        if (file) {
-          formData.append("image", file);
-        }
+      if (field === "image" && file) {
+        formData.append("image", file);
       } else {
         formData.append(field, data[field]);
       }

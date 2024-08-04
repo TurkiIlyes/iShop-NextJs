@@ -45,7 +45,8 @@ const AddressDetailsSection = ({ user }: { user: UserType | null }) => {
         value={data.details || ""}
         onChange={handleChange}
         name="details"
-        disabled={editField !== "details"}>
+        disabled={editField !== "details"}
+      >
         <EditButton
           title={editField === "details" ? "Save" : "Edit"}
           onClick={() => handleEdit("details")}
@@ -58,7 +59,8 @@ const AddressDetailsSection = ({ user }: { user: UserType | null }) => {
         disabled={editField !== "governorate"}
         value={data.governorate || ""}
         onChange={customHandleChangeSelect}
-        name="governorate">
+        name="governorate"
+      >
         <EditButton
           title={editField === "governorate" ? "Save" : "Edit"}
           onClick={() => handleEdit("governorate")}
@@ -71,7 +73,8 @@ const AddressDetailsSection = ({ user }: { user: UserType | null }) => {
         disabled={editField !== "city"}
         value={data.city || ""}
         onChange={customHandleChangeSelect}
-        name="city">
+        name="city"
+      >
         <EditButton
           title={editField === "city" ? "Save" : "Edit"}
           onClick={() => handleEdit("city")}
@@ -84,7 +87,8 @@ const AddressDetailsSection = ({ user }: { user: UserType | null }) => {
         disabled={editField !== "postalCode"}
         value={data.postalCode || ""}
         onChange={customHandleChangeSelect}
-        name="postalCode">
+        name="postalCode"
+      >
         <EditButton
           title={editField === "postalCode" ? "Save" : "Edit"}
           onClick={() => handleEdit("postalCode")}

@@ -24,7 +24,7 @@ const DeleteDialog = ({ user }: { user?: UserType | null }) => {
     password,
     handlePassword,
     isLoading,
-    executeDeleteAccount,
+    handleDelete,
   } = useDeleteDialog();
   return (
     <Dialog open={isOpen} onOpenChange={() => setIsOpen(!isOpen)}>
@@ -46,11 +46,7 @@ const DeleteDialog = ({ user }: { user?: UserType | null }) => {
         )}
 
         <DialogFooter>
-          <Button
-            type="submit"
-            disabled={isLoading}
-            onClick={executeDeleteAccount}
-          >
+          <Button type="submit" disabled={isLoading} onClick={handleDelete}>
             Delete
           </Button>
           <DialogClose>

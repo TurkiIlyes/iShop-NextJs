@@ -4,6 +4,9 @@ import { updateUserPassword } from "@/redux/slices/usersSlice";
 import { useEffect, useMemo, useState } from "react";
 import { useAppDispatch } from "@/redux/hooks";
 import { customHandleChange } from "@/utils/handlers";
+import { verifyChangePasswordValidationRules } from "@/utils/validationRules";
+import { validateFormFields } from "@/utils/validateFormFields";
+import { handleError } from "@/utils/handleError";
 
 type PasswordFormFields = {
   currentPassword: string;
@@ -26,6 +29,18 @@ const useChangePassword = () => {
   const handleEdit = (field: keyof PasswordFormFields) => {
     const formData = new FormData();
     if (field === editField) {
+      const dataToValidate: Record<string, string> = {
+        currentPassword: data.currentPassword,
+        password: data.password,
+      };
+      const newErrors = validateFormFields(
+        dataToValidate,
+        verifyChangePasswordValidationRules
+      );
+      if (Object.keys(newErrors).length > 0) {
+        handleError({ customError: true, errors: newErrors });
+        return;
+      }
       formData.append("currentPassword", data.currentPassword);
       formData.append("password", data.password);
       dispatch(updateUserPassword({ user: formData }));
