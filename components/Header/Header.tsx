@@ -8,8 +8,6 @@ import DropDownMenuLoginAvatar from "../NavBar/CustomDropDownMenu/DropDownMenuLo
 
 const Header = async () => {
   const session = await getServerSession(authOptions);
-  console.log("111111111111111111111111");
-  console.log(session);
 
   return (
     <div className=" bg-grayscale-200 shadow-sm shadow-grayscale-500 border-b-[1px] border-grayscale-500">
@@ -22,11 +20,12 @@ const Header = async () => {
         </div>
         <NavBar />
         <div className=" sm:hidden">
-        {session?.user && session?.user?.image ? (
-          <MobileNavBar session={session} />
-        ) : (
-          <DropDownMenuLoginAvatar />
-        )}</div>
+          {session?.user && session?.user?.image ? (
+            <MobileNavBar session={session} />
+          ) : (
+            <DropDownMenuLoginAvatar />
+          )}
+        </div>
       </div>
     </div>
   );

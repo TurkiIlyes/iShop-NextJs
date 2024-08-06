@@ -29,7 +29,7 @@ const links = [
 
 const AccountNavBar = () => {
   return (
-    <ul className=" flex gap-5 border-b-[1px] border-grayscale-500 ">
+    <ul className=" flex max-sm:hidden  gap-5 border-b-[1px] border-grayscale-500 ">
       {links.map((e, i) => {
         return (
           <li key={i} className=" relative">

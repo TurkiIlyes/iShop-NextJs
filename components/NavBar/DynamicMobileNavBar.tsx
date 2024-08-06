@@ -17,16 +17,21 @@ import DashboardSideBar from "../SideBar/DashboardSideBar";
 const DynamicMobileNavBar = () => {
   const path = usePathname();
   const isDashboard = path.includes("/dashboard");
+  const isHome = path === "/";
+
   return (
     <div className=" md:hidden">
-      <Sheet>
-        <SheetTrigger>
-          <FontAwesomeIcon icon={faList} className=" w-5 h-5" />
-        </SheetTrigger>
-        <SheetContent side="left" className="w-[250px] ">
-          {isDashboard ? <DashboardSideBar /> : <CategorySideBar />}
-        </SheetContent>
-      </Sheet>
+      {isHome ||
+        (isDashboard && (
+          <Sheet>
+            <SheetTrigger>
+              <FontAwesomeIcon icon={faList} className=" w-5 h-5" />
+            </SheetTrigger>
+            <SheetContent side="left" className="w-[250px] ">
+              {isDashboard ? <DashboardSideBar /> : <CategorySideBar />}
+            </SheetContent>
+          </Sheet>
+        ))}
     </div>
   );
 };
