@@ -137,7 +137,7 @@ const CustomDropdownMenuContent = ({ role }: { role?: string }) => {
       <DropdownMenuGroup>
         {mainAccountMenuContent.map((e, i) => {
           return (
-            <Link href={e.link}>
+            <Link href={e.link} key={i}>
               <DropdownMenuItem>
                 <e.icon className="mr-2 h-4 w-4" />
                 <span>{e.title}</span>
@@ -150,7 +150,7 @@ const CustomDropdownMenuContent = ({ role }: { role?: string }) => {
       <DropdownMenuGroup>
         {secondaryAccountMenuContent.map((e, i) => {
           return (
-            <Link href={e.link}>
+            <Link href={e.link} key={i}>
               <DropdownMenuItem>
                 <e.icon className="mr-2 h-4 w-4" />
                 <span>{e.title}</span>
@@ -166,7 +166,7 @@ const CustomDropdownMenuContent = ({ role }: { role?: string }) => {
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             {dashboardSubMenuContent.map((e, i) => (
-              <DropdownMenuSub>
+              <DropdownMenuSub key={i}>
                 <DropdownMenuSubTrigger>
                   <e.icon className="mr-2 h-4 w-4" />
                   <span>{e.title}</span>
