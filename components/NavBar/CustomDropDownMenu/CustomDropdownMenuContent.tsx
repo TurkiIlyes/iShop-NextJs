@@ -174,7 +174,7 @@ const CustomDropdownMenuContent = ({ role }: { role?: string }) => {
                 <DropdownMenuPortal>
                   <DropdownMenuSubContent>
                     {e.content.map((e, i) => (
-                      <Link href={e.link}>
+                      <Link href={e.link} key={i}>
                         <DropdownMenuItem>
                           <e.icon className="mr-2 h-4 w-4" />
                           <span>{e.title}</span>
