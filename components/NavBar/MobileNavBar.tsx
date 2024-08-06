@@ -9,7 +9,7 @@ import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
 import {
   Cloud,
   CreditCard,
-  Github,
+  ShoppingBasket,
   Keyboard,
   LifeBuoy,
   LogOut,
@@ -69,6 +69,11 @@ const secondaryAccountMenuContent = [
     title: "Wishlist",
     icon: LifeBuoy, // Using Lucide LifeBuoy icon (you might want to find a more suitable one)
     link: "/account/wishlist",
+  },
+  {
+    title: "Basket",
+    icon: ShoppingBasket, // Using Lucide CreditCard icon (you might want to find a more suitable one)
+    link: "/basket",
   },
 ];
 

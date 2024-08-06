@@ -41,7 +41,7 @@ const ProductSwiper = ({
           prevEl: `.${prevEl}`,
           nextEl: `.${nextEl}`,
         }}
-        className="flex  h-full w-full"
+        className="flex  h-full w-full !px-2 !py-1 "
       >
         {data.map((e, i) => {
           return (

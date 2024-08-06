@@ -1,15 +1,17 @@
-import SectionOne from "./subcomponents/SectionOne";
-import SectionTwo from "./subcomponents/SectionTwo";
-import SectionThree from "./subcomponents/SectionThree";
+import AboutUs from "./subcomponents/AboutUs";
+import QuickLinks from "./subcomponents/QuickLinks";
+import Apps from "./subcomponents/Apps";
+import ContactUs from "./subcomponents/ContactUs";
 
 const TopFooter = () => {
   return (
     <div className=" bg-darkGrey-900">
       <div className="container ">
-        <div className=" flex flex-wrap min-h-[400px] py-16 gap-y-4 max-lg:gap-x-3">
-          <SectionOne />
-          <SectionTwo />
-          <SectionThree />
+        <div className=" flex flex-wrap justify-between gap-y-6 min-h-[400px] py-14">
+          <AboutUs />
+          <QuickLinks />
+          <ContactUs />
+          <Apps />
         </div>
       </div>
     </div>

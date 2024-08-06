@@ -16,12 +16,16 @@ const ProductCardInfo = ({
 }) => {
   return (
     <div className=" flex flex-col gap-1 md:gap-2">
-      <div className=" text-sm md:text-base font-semibold">
+      <div>
         {priceAfterDiscount && (
-          <span className=" text-customRed-900">${priceAfterDiscount}</span>
+          <span className=" text-sm md:text-base font-semibold text-customRed-900">
+            {priceAfterDiscount} DT
+          </span>
         )}
 
-        <span className=" ml-2 line-through">${price}</span>
+        <span className=" ml-2 text-xs md:text-sm font-medium line-through">
+          {price} DT
+        </span>
       </div>
       <ProductCardRating
         ratingsAverage={ratingsAverage}

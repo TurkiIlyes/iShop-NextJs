@@ -36,7 +36,7 @@ const categorys = [
 
 const CategorySideBar = () => {
   return (
-    <div className=" flex flex-col w-full h-full text-grayscale-900 mt-16 pb-28  overflow-y-scroll scroll">
+    <div className=" flex flex-col w-full h-full text-grayscale-900 pb-28  overflow-y-scroll scroll">
       {categorys.map((c, i) => {
         return (
           <CategoryCollapsible key={i} title={c.title} content={c.content} />

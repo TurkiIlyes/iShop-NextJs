@@ -4,7 +4,7 @@ import React from "react";
 
 const DownloadAppBox = ({ title, icon }: { title: string; icon: IconProp }) => {
   return (
-    <div className=" flex gap-3 items-center bg-success-900 py-1.5 px-3 rounded-sm">
+    <div className=" flex gap-2 items-center bg-[#3b5998] py-2 px-2.5 rounded-sm">
       <FontAwesomeIcon icon={icon} className="w-7 h-7 text-white" />
       <div className=" flex flex-col text-xs text-white font-normal ">
         <span className=" text-xs font-normal">Available on the </span>

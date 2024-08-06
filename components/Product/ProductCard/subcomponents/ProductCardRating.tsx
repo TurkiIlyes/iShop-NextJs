@@ -11,7 +11,7 @@ const ProductCardRating = ({
     <div className="flex items-center gap-2">
       <RatingStars ratingsAverage={ratingsAverage} />
 
-      <span className=" text-xs md:text-sm font-medium md:font-semibold">
+      <span className=" text-xs md:text-xs font-medium md:font-semibold">
         ({ratingsQuantity || 0})
       </span>
     </div>

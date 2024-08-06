@@ -10,6 +10,7 @@ import {
   PlusCircle,
   Settings,
   Shapes,
+  ShoppingBasket,
   ShoppingCart,
   User,
   UserPlus,
@@ -63,6 +64,11 @@ const secondaryAccountMenuContent = [
     title: "Wishlist",
     icon: LifeBuoy, // Using Lucide LifeBuoy icon (you might want to find a more suitable one)
     link: "/account/wishlist",
+  },
+  {
+    title: "Basket",
+    icon: ShoppingBasket, // Using Lucide CreditCard icon (you might want to find a more suitable one)
+    link: "/basket",
   },
 ];
 

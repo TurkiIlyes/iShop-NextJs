@@ -22,19 +22,19 @@ const CategorySwiper = ({
       <Swiper
         loop={true}
         spaceBetween="10"
-        slidesPerView={2}
+        slidesPerView={3}
         breakpoints={{
           576: {
-            slidesPerView: 3,
-          },
-          768: {
-            slidesPerView: 3,
-          },
-          992: {
             slidesPerView: 4,
           },
+          768: {
+            slidesPerView: 4,
+          },
+          992: {
+            slidesPerView: 5,
+          },
           1200: {
-            slidesPerView: 6,
+            slidesPerView: 7,
           },
         }}
         allowTouchMove={false}

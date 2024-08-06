@@ -13,6 +13,7 @@ import {
 import CategorySideBar from "../SideBar/CategorySideBar/CategorySideBar";
 import { usePathname } from "next/navigation";
 import DashboardSideBar from "../SideBar/DashboardSideBar";
+import CustomSearchInput from "../Common/CustomInput/CustomSearchInput";
 
 const DynamicMobileNavBar = () => {
   const path = usePathname();
@@ -21,17 +22,21 @@ const DynamicMobileNavBar = () => {
 
   return (
     <div className=" md:hidden">
-      {isHome ||
-        (isDashboard && (
-          <Sheet>
-            <SheetTrigger>
-              <FontAwesomeIcon icon={faList} className=" w-5 h-5" />
-            </SheetTrigger>
-            <SheetContent side="left" className="w-[250px] ">
-              {isDashboard ? <DashboardSideBar /> : <CategorySideBar />}
-            </SheetContent>
-          </Sheet>
-        ))}
+      <Sheet>
+        <SheetTrigger>
+          <FontAwesomeIcon icon={faList} className=" w-5 h-5" />
+        </SheetTrigger>
+        <SheetContent side="left" className="w-[250px] px-4 pt-14">
+          {isDashboard ? (
+            <DashboardSideBar />
+          ) : (
+            <div className=" flex flex-col gap-4">
+              <CustomSearchInput />
+              <CategorySideBar />
+            </div>
+          )}
+        </SheetContent>
+      </Sheet>
     </div>
   );
 };

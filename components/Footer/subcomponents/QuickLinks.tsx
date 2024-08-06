@@ -15,13 +15,13 @@ const quickLinksData = [
   { title: "Contact", url: "" },
 ];
 
-const SectionTwo = () => {
+const QuickLinks = () => {
   return (
-    <div className=" flex justify-center gap-20 sm:gap-3 w-full sm:w-[38%] lg:w-[35%] px-3">
+    <div className=" max-sm:w-full px-4 h-full flex max-sm:justify-between gap-12 ">
       <LinksList title="Account" data={accountData} />
       <LinksList title="Quick Link" data={quickLinksData} />
     </div>
   );
 };
 
-export default SectionTwo;
+export default QuickLinks;

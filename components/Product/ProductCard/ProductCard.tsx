@@ -29,7 +29,7 @@ const ProductCard = ({
   addedToWishList,
 }: props) => {
   return (
-    <div className="w-full relative z-0">
+    <div className=" w-full relative z-0 bg-grayscale-300 border-2 border-grayscale-300 shadow-[0_0_3px] shadow-grayscale-500 rounded-md ">
       <div className=" group relative w-full overflow-hidden ">
         {discount && <ProductCardDiscount discount={discount} />}
         <ProductCardImage image={imageCover} />
@@ -37,9 +37,11 @@ const ProductCard = ({
         <AddToBasketButton id={id} />
       </div>
 
-      <div className=" h-[110px] md:h-[130px] flex flex-col justify-between py-2 px-2 bg-grayscale-200 ">
+      <div className=" mx-[1px] mb-[1px] h-[110px] md:h-[130px] flex flex-col justify-between py-2.5 px-2.5 bg-grayscale-400 rounded-b-md ">
         <Link href={`products/${id}`}>
-          <span className=" text-sm md:text-base font-semibold  ">{title}</span>
+          <span className=" text-sm md:text-base font-semibold text-grayscale-900  ">
+            {title}
+          </span>
         </Link>
         <ProductCardInfo
           title={title}
