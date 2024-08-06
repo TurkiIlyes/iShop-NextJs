@@ -27,7 +27,7 @@ const credentialsProvider = CredentialsProvider({
     const user = await res.json();
 
     if (res.ok && user) {
-      return { ...user.data, token: user.token };
+      return { ...user.data, token: user.token, role: user.role };
     }
     return null;
   },

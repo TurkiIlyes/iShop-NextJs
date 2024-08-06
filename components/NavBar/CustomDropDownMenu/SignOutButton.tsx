@@ -11,7 +11,7 @@ const SignOutButton = () => {
     <button
       type="button"
       onClick={handleSignOut}
-      className=" flex items-center gap-2 text-sm text-customRed-900 font-medium"
+      className=" flex items-center text-base text-customRed-900 font-medium"
     >
       <LogOut className="mr-2 h-4 w-4" />
       <span>Log out</span>

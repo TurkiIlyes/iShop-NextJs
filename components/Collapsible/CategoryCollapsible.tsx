@@ -21,7 +21,8 @@ const CategoryCollapsible = ({
     <Collapsible>
       <CollapsibleTrigger
         onClick={() => setOpen(!open)}
-        className=" flex justify-between items-center w-full py-3 pl-2 pr-4 text-left text-base font-medium">
+        className=" flex justify-between items-center w-full py-3 pl-2 pr-4 text-left text-base font-medium"
+      >
         {title}{" "}
         {content.length ? (
           open ? (

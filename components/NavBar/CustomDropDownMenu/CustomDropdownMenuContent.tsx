@@ -1,7 +1,6 @@
 import {
   Cloud,
   CreditCard,
-  Github,
   Keyboard,
   LifeBuoy,
   LogOut,
@@ -129,10 +128,10 @@ const dashboardSubMenuContent = [
   },
 ];
 
-const CustomDropdownMenuContent = () => {
+const CustomDropdownMenuContent = ({ role }: { role?: string }) => {
   // absolute -right-5 top-2
   return (
-    <DropdownMenuContent className="w-56 bg-grayscale-200 ">
+    <DropdownMenuContent className="w-56 bg-grayscale-200 absolute top-7 -right-8 ">
       <DropdownMenuLabel>My Account</DropdownMenuLabel>
       <DropdownMenuSeparator />
       <DropdownMenuGroup>
@@ -161,31 +160,35 @@ const CustomDropdownMenuContent = () => {
         })}
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
-      <DropdownMenuLabel>Dashboard</DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      <DropdownMenuGroup>
-        {dashboardSubMenuContent.map((e, i) => (
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>
-              <e.icon className="mr-2 h-4 w-4" />
-              <span>{e.title}</span>
-            </DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                {e.content.map((e, i) => (
-                  <Link href={e.link}>
-                    <DropdownMenuItem>
-                      <e.icon className="mr-2 h-4 w-4" />
-                      <span>{e.title}</span>
-                    </DropdownMenuItem>
-                  </Link>
-                ))}
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-        ))}
-      </DropdownMenuGroup>
-      <DropdownMenuSeparator />
+      {role === "admin" && (
+        <>
+          <DropdownMenuLabel>Dashboard</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            {dashboardSubMenuContent.map((e, i) => (
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>
+                  <e.icon className="mr-2 h-4 w-4" />
+                  <span>{e.title}</span>
+                </DropdownMenuSubTrigger>
+                <DropdownMenuPortal>
+                  <DropdownMenuSubContent>
+                    {e.content.map((e, i) => (
+                      <Link href={e.link}>
+                        <DropdownMenuItem>
+                          <e.icon className="mr-2 h-4 w-4" />
+                          <span>{e.title}</span>
+                        </DropdownMenuItem>
+                      </Link>
+                    ))}
+                  </DropdownMenuSubContent>
+                </DropdownMenuPortal>
+              </DropdownMenuSub>
+            ))}
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+        </>
+      )}
       <DropdownMenuItem>
         <SignOutButton />
       </DropdownMenuItem>

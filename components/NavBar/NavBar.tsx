@@ -7,9 +7,7 @@ const NavBar = () => {
   return (
     <div className="flex max-sm:hidden items-center gap-5">
       <CustomSearchInput />
-
       <Wishlist />
-
       <CartShopping />
       <NavDropdownMenu />
     </div>

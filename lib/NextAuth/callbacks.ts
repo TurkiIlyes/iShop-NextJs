@@ -1,7 +1,6 @@
 import { Account, Profile, Session, User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import { AdapterUser } from "next-auth/adapters";
-import toast from "react-hot-toast";
 
 interface SignInData {
   provider: string;
@@ -15,6 +14,7 @@ declare module "next-auth" {
   interface User {
     _id?: string;
     token?: string;
+    role?: string;
   }
   interface Session {
     user: {
@@ -23,6 +23,7 @@ declare module "next-auth" {
       email?: string;
       image?: string;
       token?: string;
+      role?: string;
     };
   }
 }
@@ -57,8 +58,15 @@ export const signInCallback = async ({
       if (res.ok) {
         if (userData?.data?._id && userData?.token) {
           user._id = userData.data._id;
+          user.role = userData.data.role;
           (user as any).id = user._id;
+          (user as any).role = user.role;
           (user as any).token = userData.token;
+
+          console.log("2222222222222222222222");
+          console.log(userData);
+          console.log(user.role);
+
           return true;
           // return "/auth/success";
         } else {
@@ -88,6 +96,11 @@ export const jwtCallback = async ({
   if (user) {
     token.id = user._id;
     token.token = user.token;
+    token.role=user.role;
+    console.log("tokentokentokentokentokentokentokentoken");
+    console.log("useruseruseruseruseruseruseruseruseruser");
+    console.log(token);
+    console.log(user)
   }
   return token;
 };
@@ -100,7 +113,13 @@ export const sessionCallback = async ({
   token: JWT;
 }): Promise<Session> => {
   if (session.user) {
+    console.log(
+      "sessiontokensessiontokensessiontokensessiontokensessiontokensessiontoken"
+    );
+    console.log(session);
+    console.log(token);
     session.user.id = token.id as string;
+    session.user.role = token.role as string;
     session.user.token = token.token as string;
   }
   return session;

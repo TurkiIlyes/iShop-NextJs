@@ -11,7 +11,7 @@ import DropDownMenuLoggedAvatar from "./DropDownMenuLoggedAvatar";
 const CustomDropDownMenu = async () => {
   const session = await getServerSession(authOptions);
   return (
-    <DropdownMenu >
+    <DropdownMenu>
       {session?.user && session?.user?.image ? (
         <DropdownMenuTrigger asChild>
           <DropDownMenuLoggedAvatar image={session?.user?.image} />
@@ -20,7 +20,7 @@ const CustomDropDownMenu = async () => {
         <DropDownMenuLoginAvatar />
       )}
 
-      <CustomDropdownMenuContent />
+      <CustomDropdownMenuContent role={session?.user?.role} />
     </DropdownMenu>
   );
 };

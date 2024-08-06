@@ -71,7 +71,7 @@ const links = [
 ];
 const DashboardSideBar = () => {
   return (
-    <div className="w-full h-full py-8 px-4  ">
+    <div className="w-full h-full py-8  ">
       <div className=" h-full flex flex-col gap-2">
         {links.map((e, i) => {
           return (
