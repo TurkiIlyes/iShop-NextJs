@@ -17,10 +17,12 @@ const quickLinksData = [
 
 const QuickLinks = () => {
   return (
-    <div className=" max-sm:w-full px-4 h-full flex max-sm:justify-between gap-12 ">
+    // <div className=" max-md:w-full h-full flex max-md:justify-center gap-24 sm:gap-36 ">
+    <>
       <LinksList title="Account" data={accountData} />
       <LinksList title="Quick Link" data={quickLinksData} />
-    </div>
+    </>
+    // </div>
   );
 };
 

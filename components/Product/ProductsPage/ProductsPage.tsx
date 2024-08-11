@@ -7,6 +7,9 @@ const ProductsPage = () => {
   const {
     handleChangeState,
     handleRangeChange,
+    handleRangeMinInputChange,
+    handleRangeMaxInputChange,
+    choosedPrices,
     setCheckedCategories,
     setCheckedPrice,
     checkedColors,
@@ -23,10 +26,13 @@ const ProductsPage = () => {
   return (
     <div className=" bg-grayscale-400">
       <div className="container">
-        <div className=" flex gap-6 py-4">
+        <div className=" flex gap-2 py-4">
           <FilterSideBar
             handleChangeState={handleChangeState}
             handleRangeChange={handleRangeChange}
+            handleRangeMinInputChange={handleRangeMinInputChange}
+            handleRangeMaxInputChange={handleRangeMaxInputChange}
+            choosedPrices={choosedPrices}
             setCheckedCategories={setCheckedCategories}
             setCheckedPrice={setCheckedPrice}
             checkedColors={checkedColors}

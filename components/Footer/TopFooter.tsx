@@ -7,7 +7,7 @@ const TopFooter = () => {
   return (
     <div className=" bg-darkGrey-900">
       <div className="container ">
-        <div className=" flex flex-wrap justify-between gap-y-6 min-h-[400px] py-14">
+        <div className=" flex flex-wrap justify-center lg:justify-between gap-y-6 min-h-[400px] py-14">
           <AboutUs />
           <QuickLinks />
           <ContactUs />

@@ -7,7 +7,7 @@ const BottomFooter = () => {
             <span className="text-sm text-white text-opacity-60 font-normal">
               &copy;{new Date().getFullYear()} All rights reserved by
             </span>
-            <span className=" text-base text-white font-bold ml-1">Ishop</span>
+            <span className=" text-base text-white font-bold ml-1">IT</span>
           </span>
         </div>
       </div>

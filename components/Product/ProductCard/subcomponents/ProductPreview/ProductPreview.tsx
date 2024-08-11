@@ -12,7 +12,7 @@ const ProductPreview = ({
   addedToWishList?: boolean;
 }) => {
   return (
-    <div className=" absolute right-2 top-4 opacity-0 group-hover:opacity-100 flex transition-all duration-500 flex-col gap-2 text-grayscale-900 ">
+    <div className=" absolute right-2 top-4 opacity-0 group-hover:opacity-100 flex transition-all duration-500 flex-col gap-2 ">
       {addedToWishList ? (
         <RemoveFromWishListButton id={id} />
       ) : (

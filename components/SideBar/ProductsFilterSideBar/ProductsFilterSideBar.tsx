@@ -3,7 +3,8 @@ import ProductSizeOptions from "@/components/Product/ProductPage/subcomponents/P
 import FilterButtons from "./subcomponents/FilterButtons";
 import PriceRange from "./subcomponents/PriceRange";
 import ProductColorOptions from "@/components/Product/ProductPage/subcomponents/ProductColorOptions";
-import { CategoryType} from "@/redux/slices/categoriesSlice";
+import { CategoryType } from "@/redux/slices/categoriesSlice";
+import CustomFilterRangeInput from "./subcomponents/CustomFilterRangeInput";
 
 const filterByPriceData = [
   {
@@ -30,6 +31,9 @@ const filterByPriceData = [
 const FilterSideBar = ({
   handleChangeState,
   handleRangeChange,
+  handleRangeMinInputChange,
+  handleRangeMaxInputChange,
+  choosedPrices,
   setCheckedCategories,
   setCheckedPrice,
   checkedColors,
@@ -45,6 +49,9 @@ const FilterSideBar = ({
     setData: React.Dispatch<React.SetStateAction<string[]>>
   ) => void;
   handleRangeChange: (value: { min: number; max: number }) => void;
+  handleRangeMinInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleRangeMaxInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  choosedPrices?: { min: number; max: number } | null;
   setCheckedCategories?: React.Dispatch<React.SetStateAction<string[]>>;
   setCheckedPrice: React.Dispatch<React.SetStateAction<string[]>>;
   checkedColors?: string[];
@@ -56,7 +63,7 @@ const FilterSideBar = ({
   categories?: CategoryType[];
 }) => {
   return (
-    <div className=" sticky top-2 bottom-4 w-1/4 max-h-[97vh] py-8 px-8  bg-grayscale-200 rounded-xl overflow-y-scroll filterScroll ">
+    <div className=" max-lg:hidden sticky top-2 bottom-4 w-1/4 max-h-[97vh] py-8 px-8  bg-grayscale-200 rounded-xl overflow-y-scroll filterScroll ">
       <div className=" flex flex-col gap-5 h-fit w-full ">
         {categories && setCheckedCategories && (
           <FilterBy
@@ -80,9 +87,15 @@ const FilterSideBar = ({
           }}
         />
         <PriceRange
+          choosedPrices={choosedPrices}
           onChange={(value) => {
             handleRangeChange(value);
           }}
+        />
+        <CustomFilterRangeInput
+          handleRangeMinInputChange={handleRangeMinInputChange}
+          handleRangeMaxInputChange={handleRangeMaxInputChange}
+          choosedPrices={choosedPrices}
         />
         <ProductColorOptions
           checkedColors={checkedColors}

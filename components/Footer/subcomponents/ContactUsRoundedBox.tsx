@@ -6,7 +6,7 @@ const ContactUsRoundedBox = ({ icon }: { icon: IconProp }) => {
   return (
     <FontAwesomeIcon
       icon={icon}
-      className=" w-4 h-4 p-2.5 my-4 bg-white hover:bg-[#3b5998] text-[#3b5998] hover:text-white rounded-full cursor-pointer  "
+      className=" w-4 h-4 p-2.5 my-4 bg-white hover:bg-primary text-primary hover:text-white rounded-full cursor-pointer  "
     />
   );
 };

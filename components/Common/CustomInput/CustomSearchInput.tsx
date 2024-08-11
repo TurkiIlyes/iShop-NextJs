@@ -35,7 +35,7 @@ const CustomSearchInput = () => {
         value={searchKeyWork || ""}
         onChange={handleInputChange}
         placeholder="What Are You Looking For?"
-        className=" bg-grayscale-300 focus:bg-gradientAccent-600 focus:bg-opacity-20 w-[255px] h-[52px] p-4 rounded-lg border-[7px] border-transparent focus:border-grayscale-200 outline outline-1 outline-grayscale-900 focus:outline-gradientAccent-600 text-[12px] font-normal placeholder-gray-500 "
+        className=" bg-grayscale-300 focus:bg-gradientAccent-600 focus:bg-opacity-20 w-[255px] h-[52px] p-4 rounded-lg border-[7px] border-transparent focus:border-grayscale-200 outline outline-1 outline-grayscale-900 focus:outline-gradientAccent-600 text-[10px] sm:text-xs font-normal placeholder-gray-500 "
       />
       <FontAwesomeIcon
         icon={faMagnifyingGlass}

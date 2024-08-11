@@ -168,8 +168,10 @@ export const verifyProductValidationRules = {
   },
   images: {
     customValidator: (value: string) => {
-      if (!value) {
+      if (value) {
         const imagesFiles = value.split(",");
+        console.log(value);
+        console.log(imagesFiles);
         for (let i = 0; i < imagesFiles.length; i++) {
           if (
             !["image/jpeg", "image/png", "image/gif"].includes(imagesFiles[i])

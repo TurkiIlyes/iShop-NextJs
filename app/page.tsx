@@ -21,10 +21,10 @@ export default async function Home() {
         nextEl="flash-seles-next"
         buttom="View All Products"
       />
-      <CategoriesSection
+      {/* <CategoriesSection
         prevEl="category-seles-prev"
         nextEl="category-seles-next"
-      />
+      /> */}
       <ProductSection
         data={oldestProducts}
         prevEl="test-seles-prev"

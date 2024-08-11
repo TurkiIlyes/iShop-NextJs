@@ -6,12 +6,12 @@ import SecondaryButton from "../Common/SecondaryButton";
 const CategorySection = () => {
   return (
     <div className="container ">
-      <div className=" flex max-lg:flex-col-reverse px-8 lg:px-14 py-6 lg:py-14 my-8 bg-darkGrey-900 text-white rounded-md">
-        <div className=" w-full lg:w-1/2">
-          <span className="text-sm font-semibold text-success-700">
+      <div className=" shadowPulse flex max-lg:flex-col-reverse px-8 lg:px-14 py-6 lg:py-8 my-8 bg-darkGrey-900 text-white rounded-md">
+        <div className=" w-full lg:w-1/2 max-lg:flex max-lg:flex-col  max-lg:items-center">
+          <span className=" max-lg:hidden w-full text-left text-base font-semibold text-primary ">
             Categories
           </span>
-          <h2 className=" max-lg:text-3xl lg:text-[44px] font-semibold my-6">
+          <h2 className=" max-lg:text-center max-lg:text-[30px] lg:text-[44px] font-semibold my-6">
             Enhance Your Music Experience
           </h2>
           <div className="flex gap-3 lg:gap-6 text-grayscale-900 mb-10">

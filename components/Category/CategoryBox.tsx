@@ -34,7 +34,7 @@ const CategoryBox = ({
         </div>
       )} */}
         <div
-          className={` w-3/5 aspect-[1/1]  flex items-center justify-center bg-customRed-900 rounded-full shadow-[0_0_3px] shadow-grayscale-700 `}
+          className={` w-3/5 aspect-[1/1]  flex items-center justify-center bg-primary rounded-full shadow-[0_0_3px] shadow-grayscale-700 `}
           // className={` w-3/5 aspect-[1/1]  flex items-center justify-center rounded-full ${bgColor}`}
         >
           <Image
@@ -45,7 +45,7 @@ const CategoryBox = ({
             className=" w-8 aspect-[1/1]"
           />
         </div>
-        <h3 className=" text-xl font-semibold text-grayscale-900 ">{name}</h3>
+        <h3 className=" text-xl font-semibold text-primary ">{name}</h3>
       </div>
     </Link>
   );

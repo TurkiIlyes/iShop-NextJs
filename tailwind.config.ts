@@ -29,7 +29,7 @@ const config: Config = {
     },
     extend: {
       dropShadow: {
-        customGreen: "0 35px 35px #34EAB9",
+        customGreen: "0 35px 35px #0F626B",
       },
       scrollbar: {
         thumb: "bg-grayscale-400 rounded-md",
@@ -37,6 +37,7 @@ const config: Config = {
         hover: "bg-grayscale-500",
       },
       colors: {
+        primary: "#0F626B",
         customRed: {
           900: "#B71F3B",
         },
@@ -109,10 +110,10 @@ const config: Config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
+        // primary: {
+        //   DEFAULT: "hsl(var(--primary))",
+        //   foreground: "hsl(var(--primary-foreground))",
+        // },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
@@ -144,6 +145,14 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        shadowPulse: {
+          "0%, 100%": {
+            boxShadow: "inset 0 0 5px #0F626B, 0 0 5px #0F626B",
+          },
+          "50%": {
+            boxShadow: "inset 0 0 10px #0F626B, 0 0 20px #0F626B",
+          },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -158,6 +167,7 @@ const config: Config = {
         },
       },
       animation: {
+        shadowPulse: "shadowPulse 4s linear infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "caret-blink": "caret-blink 1.25s ease-out infinite",

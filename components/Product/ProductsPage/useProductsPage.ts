@@ -18,36 +18,64 @@ const useProductsPage = () => {
     min: 0,
     max: 1000,
   });
+  const [choosedPrices, setChoosedPrices] = useState<{
+    min: number;
+    max: number;
+  } | null>(null);
   const [checkedColors, setCheckedColors] = useState<string[]>([]);
   const [checkedSize, setCheckedSize] = useState<string[]>([]);
 
   const paginationResult = useAppSelector(
     (state) => state.products.paginationResult
   );
-  
 
   useEffect(() => {
     handleSubmit();
   }, [currentPage, search]);
 
-  const handleSubmit = () => {
-    
+  useEffect(() => {
     let minPrice = 0;
     let maxPrice = 0;
-    const choosedPrices = [...checkedPrice, JSON.stringify(rangePrice)];
 
-    if (choosedPrices.length > 0) {
-      minPrice = JSON.parse(choosedPrices[0]).min;
-      maxPrice = JSON.parse(choosedPrices[0]).max;
-      choosedPrices.forEach((e) => {
-        if (JSON.parse(e).min < minPrice) {
-          minPrice = JSON.parse(e).min;
-        }
-        if (JSON.parse(e).max > maxPrice) {
-          maxPrice = JSON.parse(e).max;
-        }
-      });
+    // Prioritize checkedPrice if it has values
+    if (checkedPrice.length > 0) {
+      // Assuming checkedPrice contains strings representing min/max objects
+      // You might need to adjust the parsing logic based on your actual data structure
+      const parsedPrices = checkedPrice.map((price) => JSON.parse(price));
+      minPrice = Math.min(...parsedPrices.map((p) => p.min));
+      maxPrice = Math.max(...parsedPrices.map((p) => p.max));
+    } else {
+      // Fallback to rangePrice if checkedPrice is empty
+      minPrice = rangePrice.min;
+      maxPrice = rangePrice.max;
     }
+
+    setChoosedPrices({ min: minPrice, max: maxPrice });
+  }, [checkedPrice, rangePrice]);
+
+  // useEffect(() => {
+  //   let minPrice = 0;
+  //   let maxPrice = 0;
+  //   const choosedPrices = [...checkedPrice, JSON.stringify(rangePrice)];
+  //   console.log(checkedPrice);
+  //   console.log(choosedPrices);
+  //   if (choosedPrices.length > 0) {
+  //     minPrice = JSON.parse(choosedPrices[0]).min;
+  //     maxPrice = JSON.parse(choosedPrices[0]).max;
+  //     choosedPrices.forEach((e) => {
+  //       if (JSON.parse(e).min < minPrice) {
+  //         minPrice = JSON.parse(e).min;
+  //       }
+  //       if (JSON.parse(e).max > maxPrice) {
+  //         maxPrice = JSON.parse(e).max;
+  //       }
+  //     });
+  //     console.log(choosedPrices);
+  //   }
+  //   setChoosedPrices({ min: minPrice, max: maxPrice });
+  // }, [checkedPrice, rangePrice]);
+
+  const handleSubmit = () => {
     dispatch(
       getProducts(
         `?limit=20${search ? `&search=${search}` : ""}${
@@ -59,9 +87,15 @@ const useProductsPage = () => {
             ? `&category=${checkedCategories.join(",")}`
             : ""
         }${
-          choosedPrices.length > 0
-            ? `${minPrice >= 0 ? `&priceAfterDiscount[gte]=${minPrice}` : ""}${
-                maxPrice > 0 ? `&priceAfterDiscount[lte]=${maxPrice}` : ""
+          choosedPrices
+            ? `${
+                choosedPrices.min >= 0
+                  ? `&priceAfterDiscount[gte]=${choosedPrices.min}`
+                  : ""
+              }${
+                choosedPrices.max > 0
+                  ? `&priceAfterDiscount[lte]=${choosedPrices.max}`
+                  : ""
               }
               `
             : ""
@@ -92,13 +126,24 @@ const useProductsPage = () => {
   const handleRangeChange = (value: { min: number; max: number }) => {
     setRangePrice(value);
   };
+  const handleRangeMinInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const value = parseInt(e.target.value);
+    setRangePrice((prev) => ({ ...prev, min: value }));
+  };
+  const handleRangeMaxInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const value = parseInt(e.target.value);
+    setRangePrice((prev) => ({ ...prev, max: value }));
+  };
 
   const handleChangeState = (
     value: string,
     setData: React.Dispatch<React.SetStateAction<string[]>>
   ) => {
     setData((prev) => {
-      
       if (prev.includes(value)) {
         return prev.filter((e) => e !== value);
       } else {
@@ -114,6 +159,9 @@ const useProductsPage = () => {
   return {
     handleChangeState,
     handleRangeChange,
+    handleRangeMinInputChange,
+    handleRangeMaxInputChange,
+    choosedPrices,
     setCheckedCategories,
     setCheckedPrice,
     checkedColors,

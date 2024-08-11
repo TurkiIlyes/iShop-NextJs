@@ -1,14 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Range, getTrackBackground } from "react-range";
 
 const PriceRange = ({
+  choosedPrices,
   onChange,
 }: {
+  choosedPrices?: { min: number; max: number } | null;
   onChange: (value: { min: number; max: number }) => void;
 }) => {
   const [values, setValues] = useState([0, 1000]);
+  useEffect(() => {
+    if (choosedPrices) {
+      setValues([choosedPrices?.min, choosedPrices?.max]);
+    }
+  }, [choosedPrices]);
   const MIN = 0;
   const MAX = 1000;
 

@@ -22,7 +22,7 @@ const ProductSwiper = ({
     <>
       <Swiper
         loop={true}
-        spaceBetween={30}
+        spaceBetween={20}
         slidesPerView={2}
         breakpoints={{
           768: {

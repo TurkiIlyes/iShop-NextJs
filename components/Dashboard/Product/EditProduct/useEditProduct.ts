@@ -184,7 +184,8 @@ const useEditProduct = (id: string) => {
         formImages.push(await urlToFile(image, `image.png`, "image/jpeg"));
       }
     }
-
+    console.log(formImage);
+    console.log(formImages);
     const dataToValidate: Record<string, string> = {
       title: productData.title || "",
       description: productData.description || "",

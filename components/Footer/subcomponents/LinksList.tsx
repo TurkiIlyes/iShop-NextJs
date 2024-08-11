@@ -1,7 +1,6 @@
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import React from "react";
 
 interface props {
   title: string;
@@ -13,7 +12,7 @@ interface props {
 
 const LinksList = ({ title, data }: props) => {
   return (
-    <div className=" flex flex-col items-center gap-8 ">
+    <div className=" max-lg:w-1/2 flex flex-col items-center gap-8 ">
       <h2 className=" text-xl font-normal text-grayscale-200">{title}</h2>
       <ul className="">
         {data.map((e, i) => {
@@ -22,7 +21,7 @@ const LinksList = ({ title, data }: props) => {
               <Link href={e.url} className="flex items-center ">
                 <FontAwesomeIcon
                   icon={faLocationArrow}
-                  className=" w-4 h-4 text-[#3b5998] group-hover:rotate-45 transition-all duration-300"
+                  className=" w-4 h-4 text-primary group-hover:rotate-45 transition-all duration-300"
                 />
                 <span className=" ml-4 text-xs font-normal text-opacity-90 text-grayscale-200 group-hover:text-[#1da1f2] transition-all duration-300">
                   {e.title}

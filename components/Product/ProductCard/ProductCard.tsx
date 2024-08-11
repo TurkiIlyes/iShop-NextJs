@@ -37,7 +37,7 @@ const ProductCard = ({
         <AddToBasketButton id={id} />
       </div>
 
-      <div className=" mx-[1px] mb-[1px] h-[110px] md:h-[130px] flex flex-col justify-between py-2.5 px-2.5 bg-grayscale-400 rounded-b-md ">
+      <div className=" h-[110px] md:h-[130px] flex flex-col justify-between py-3 px-3 ">
         <Link href={`products/${id}`}>
           <span className=" text-sm md:text-base font-semibold text-grayscale-900  ">
             {title}

@@ -11,7 +11,7 @@ const FeatureBox = ({ title, description, icon }: props) => {
     <div className=" text-center py-8 ">
       <FontAwesomeIcon
         icon={icon}
-        className=" w-8 h-8 text-white p-3 my-4  bg-grayscale-900 border-[10px] border-grayscale-500 rounded-full"
+        className=" w-8 h-8 text-white p-3 my-4  bg-primary border-[10px] border-grayscale-500 rounded-full"
       />
       <h2 className="text-xl sm:text-lg md:text-xl font-semibold text-grayscale-900">
         {title}

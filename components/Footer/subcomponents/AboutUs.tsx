@@ -9,9 +9,9 @@ import SocialMediaRoundedBox from "./SocialMediaRoundedBox";
 
 const AboutUs = () => {
   return (
-    <div className="  w-[300px] max-sm:w-full flex flex-col gap-8 max-sm:items-center ">
+    <div className=" w-full lg:w-[300px] flex flex-col gap-8 max-lg:items-center ">
       <h1 className=" text-4xl font-bold text-white">iShop</h1>
-      <p className=" max-sm:w-11/12 text-sm font-normal leading-loose text-white text-opacity-90">
+      <p className=" max-lg:w-4/6 text-justify text-sm font-normal leading-loose text-white text-opacity-90">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat
         delectus distinctio ipsam rem accusantium impedit.
       </p>
